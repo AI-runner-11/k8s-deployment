@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: spring-petclinic-service
   namespace: spring-petclinic
+spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
