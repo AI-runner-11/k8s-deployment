@@ -8,6 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-2:203360591048:certificate/b219be37-a0d8-4395-a208-cf428f167f2a"
     external-dns.alpha.kubernetes.io/hostname: spring-petclinic.blnk.us
 spec:
   ingressClassName: alb
