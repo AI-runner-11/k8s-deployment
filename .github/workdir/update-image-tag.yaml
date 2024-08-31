@@ -1,0 +1,27 @@
+on:
+  repository_dispatch:
+    types: [update-docker-tag]
+
+jobs:
+  update-docker-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+         fetch-depth: 0
+
+      - name: Update Docker Image Tag
+        run: |
+          cd ${{ github.event.client_payload.path }}/${{ github.event.client_payload.service }}
+          pwd
+          NEW_TAG=${{ github.event.client_payload.imageTag }}
+          echo $OLD_TAG
+          yq -i '.${{ github.event.client_payload.service }}.image.tag = "'${NEW_TAG}'"' values.yaml
+          git config --global user.name "chandrapal11"
+          git config --global user.email "chandrapal11@gmail.com"
+          git add values.yaml      
+          git commit -m "Updating values.yaml from CI to $NEW_TAG"
+          git push
