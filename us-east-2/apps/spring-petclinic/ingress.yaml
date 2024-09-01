@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: spring-petclinic
+  name: spring-petclinic-alb
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-2:203360591048:certificate/b219be37-a0d8-4395-a208-cf428f167f2a"
+    external-dns.alpha.kubernetes.io/hostname: spring-petclinic.blinkng.net
+spec:
+  ingressClassName: alb
+  rules:
+    - host: spring-petclinic.blinkng.net
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: spring-petclinic-service
+              port:
+                number: 8080
