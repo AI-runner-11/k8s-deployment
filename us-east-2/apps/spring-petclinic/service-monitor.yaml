@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+ name: spring-boot-app-service-monitor
+ namespace: spring-petclinic
+spec:
+ selector:
+   app.kubernetes.io/instance: spring-petclinic-service
+   app.kubernetes.io/name: spring-petclinic
+ endpoints:
+   - port: http-traffic
+     path: "/actuator/prometheus"
