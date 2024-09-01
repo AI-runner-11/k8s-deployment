@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: spring-petclinic-quota
+  namespace: spring-petclinic
+spec:
+  hard:
+    requests.cpu: "4"         # Total CPU request limit for all pods in the namespace
+    requests.memory: "8Gi"    # Total memory request limit for all pods in the namespace
+    limits.cpu: "8"           # Total CPU limit for all pods in the namespace
+    limits.memory: "16Gi"     # Total memory limit for all pods in the namespace
+    pods: "20"     
