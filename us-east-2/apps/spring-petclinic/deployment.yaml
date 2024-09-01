@@ -4,6 +4,14 @@ metadata:
   name: spring-petclinic-service
   namespace: spring-petclinic
 spec:
+  securityContext:
+    capabilities:
+      drop:
+        - ALL
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    seccompProfile:
+      type: RuntimeDefault
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
