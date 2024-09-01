@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: spring-petclinic-policy
+  namespace: spring-petclinic
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: spring-petclinic
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/namespace: spring-petclinic
+  - from:
+    - podSelector:
+        matchLabels:
+          app: database  
+    ports:
+      - protocol: TCP
+        port: 5432  # database port 
+  - ports:
+      - protocol: TCP
+        port: 80  
+  - ports:
+      - protocol: TCP
+        port: 443 
+  - ports:
+      - protocol: UDP
+        port: 53 
+  - ports:
+      - protocol: UDP
+        port: 5353  
+
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+    ports:
+      - protocol: TCP
+        port: 443
+      - protocol: TCP
+        port: 80
