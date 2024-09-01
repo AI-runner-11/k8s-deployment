@@ -5,9 +5,9 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: backend-services
+    namespace: spring-petclinic
     server: https://kubernetes.default.svc
-  project: backend-services
+  project: spring-petclinic
   source:
     path: us-east-2/apps/spring-petclinic
     repoURL: git@github.com:AI-runner-11/k8s-deployment.git
