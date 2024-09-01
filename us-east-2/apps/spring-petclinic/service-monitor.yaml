@@ -8,5 +8,5 @@ spec:
    app.kubernetes.io/instance: spring-petclinic-service
    app.kubernetes.io/name: spring-petclinic
  endpoints:
-   - port: http-traffic
+   - port: http
      path: "/actuator/prometheus"
