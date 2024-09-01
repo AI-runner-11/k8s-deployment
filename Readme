@@ -8,7 +8,8 @@ Prerequisites
 5. AWS Load Balancer: For external access to the application.
 6. CoreDNS: For DNS resolution within the cluster.
 7. DB Secret: A secret containing database connection details.
-8. PostgreSQL RDS in AWS having connectivity with EKS
+8. PostgreSQL RDS:   AWS having connectivity with EKS
+9. Route 53: Create entry of ALB in route 53 for application routing.
 
 Deployment Steps
 

@@ -3,7 +3,7 @@ data:
   APPLICATION_NAME: spring-petclinic
   APPLICATION_VERSION: 0.1.0
   DATABASE: postgres
-  SPRING_DATASOURCE_URL: jdbc:postgresql://blink-qa-postgresql.cudazhvkdzgr.us-east-2.rds.amazonaws.com:5432/petclinic
+  SPRING_DATASOURCE_URL: jdbc:postgresql://petclinic-qa-postgresql.cudazhvkdzgr.us-east-2.rds.amazonaws.com:5432/petclinic
   # SQL is written to be idempotent so this is safe
   SPRING_SQL_INIT_MODE: always
     # Web
