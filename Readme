@@ -1,1 +1,34 @@
-Readme
+README: Deploying Spring Petclinic on EKS
+
+Prerequisites
+1. EKS Cluster: A running EKS cluster.
+2. ESO Secret Manager: For storing sensitive application secrets.
+3. Prometheus and Grafana: For monitoring and alerting.
+4. ArgoCD: For continuous delivery and application management.
+5. AWS Load Balancer: For external access to the application.
+6. CoreDNS: For DNS resolution within the cluster.
+7. DB Secret: A secret containing database connection details.
+8. PostgreSQL RDS in AWS having connectivity with EKS
+
+Deployment Steps
+
+1. Create Namespace and Quota:
+
+Execute the namespace.yaml and namespace-quota.yaml files within the k8s-deployment/us-east-2/apps/namespace directory to create the namespace for the Spring Petclinic application.
+kubectl create -f namespace.yaml
+kubectl create -f namespace-quota.yaml
+
+2. Onboard Service Monitor for HPA:
+
+Create the service monitor for Horizontal Pod Autoscaling (HPA):
+kubectl create -f k8s-deployment/us-east-2/apps/argocd/service-monitor-arocd.yaml
+
+
+3. Onboard Application:
+Create the Spring Petclinic application in ArgoCD:
+kubectl create -f k8s-deployment/us-east-2/apps/argocd/spring-petclinic-argocd.yaml
+
+4. Check Application Status:
+Log in to ArgoCD and verify the status of the Spring Petclinic application.
+
+Note: Replace us-east-2 with your actual EKS region. Ensure that the necessary secrets, config maps, and other required resources are configured correctly within your ArgoCD application definition.
