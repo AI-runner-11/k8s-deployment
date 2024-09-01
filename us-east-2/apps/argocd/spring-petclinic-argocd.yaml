@@ -12,3 +12,8 @@ spec:
     path: us-east-2/apps/spring-petclinic
     repoURL: git@github.com:AI-runner-11/k8s-deployment.git
     targetRevision: HEAD
+  
+  syncPolicy:
+    automated:
+      prune: true  
+      selfHeal: true
