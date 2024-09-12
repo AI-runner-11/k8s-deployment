@@ -19,7 +19,7 @@ jobs:
           pwd
           NEW_TAG=${{ github.event.client_payload.imageTag }}
           echo $OLD_TAG
-          yq -i '.${{ github.event.client_payload.service }}.image.tag = "'${NEW_TAG}'"' values.yaml
+          yq -i '.${{ github.event.client_payload.service }}.image.tag = "'${NEW_TAG}'"' deployment.yaml
           git config --global user.name "chandrapal11"
           git config --global user.email "chandrapal11@gmail.com"
           git add values.yaml      
