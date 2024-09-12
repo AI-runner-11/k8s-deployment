@@ -23,5 +23,5 @@ jobs:
           git config --global user.name "chandrapal11"
           git config --global user.email "chandrapal11@gmail.com"
           git add values.yaml      
-          git commit -m "Updating values.yaml from CI to $NEW_TAG"
+          git commit -m "Updating deployment.yaml from CI to $NEW_TAG"
           git push
